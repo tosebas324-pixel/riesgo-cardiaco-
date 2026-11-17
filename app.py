@@ -8,7 +8,9 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
-BASE = Path(__file__).parent / "artefactos"
+_RAIZ = Path(__file__).parent
+# Usa la carpeta artefactos/ si existe; si los archivos quedaron en la raíz del repositorio, usa la raíz.
+BASE = _RAIZ / "artefactos" if (_RAIZ / "artefactos" / "modelo_riesgo.joblib").exists() else _RAIZ
 ORDEN = ["Bajo", "Medio", "Alto"]
 COLORES = {"Bajo": "#4C9F70", "Medio": "#E0B040", "Alto": "#C8553D"}
 INTEGRANTES = ["Sebastián Andrés Muñoz Lemus"]   # <-- agrega a todos los integrantes
@@ -219,3 +221,4 @@ with tab5:
 
 st.divider()
 st.caption("Prototipo académico – Minería de Datos, Universidad de la Costa. " + "Integrantes: " + ", ".join(INTEGRANTES))
+
